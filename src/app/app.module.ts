@@ -9,6 +9,7 @@ import { NavComponent } from './nav/nav.component';
 import { IntroComponent } from './intro/intro.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { QutufService } from './shared/utils/qutuf-service.service'
 import { ApiService } from './shared/utils/api-service.service'
 @NgModule({
@@ -23,7 +24,8 @@ import { ApiService } from './shared/utils/api-service.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ApiService,

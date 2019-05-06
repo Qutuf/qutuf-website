@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL_TEXT: "https://qutuf.herokuapp.com/?outputformat=json&text=",
+  BASE_URL_TEXT: "https://cors-anywhere.herokuapp.com/https://qutuf.herokuapp.com/?outputformat=json&text=",
   BASE_URL_PHRASE: "https://qutuf.herokuapp.com/?functionality=lemma&outputformat=json&text=",
 
 };
