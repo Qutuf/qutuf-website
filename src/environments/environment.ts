@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  BASE_URL_TEXT: "https://qutuf.herokuapp.com/?outputformat=json&text=",
+  BASE_URL_PHRASE: "https://qutuf.herokuapp.com/?functionality=lemma&outputformat=json&text=",
+
 };
 
 /*

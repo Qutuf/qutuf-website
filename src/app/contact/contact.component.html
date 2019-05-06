@@ -1,0 +1,39 @@
+<div id="contact" class="hero-form field field-grouped is-revealing">
+  <div class="control control-expanded">
+
+    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+      <h5 *ngIf="success">Your form is valid!</h5>
+
+      <div class="control control-expanded">
+        <input class="input" style="margin-bottom:10px;" type="text" formControlName="name"
+          placeholder="Your Name &hellip;">
+      </div>
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+      </div>
+
+      <div class="control control-expanded">
+        <textarea class="input" formControlName="message" placeholder="Your Messege &hellip;"></textarea>
+      </div>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+
+      <div class="control control-expanded">
+        <input
+          style="margin-bottom:10px; background-color: #4f5fff; border: none ; color: white; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+          type="submit" value="Send message" class="cta">
+      </div>
+
+    </form>
+
+    <div *ngIf="submitted" class="results">
+      <strong>Name:</strong>
+      <span>{{ messageForm.controls.name.value }}</span>
+
+      <strong>Message:</strong>
+      <span>{{ messageForm.controls.message.value }}</span>
+    </div>
+  </div>
+</div>
