@@ -9,7 +9,7 @@ import { catchError, map } from "rxjs/operators";
 
 // Set the http options
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json", "Authorization": "c31z" })
+  headers: new HttpHeaders({ "Content-Type": "application/json", 'origin': 'x-requested-with'})
 };
 
 @Injectable({

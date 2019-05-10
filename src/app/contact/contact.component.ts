@@ -32,9 +32,9 @@ export class ContactComponent implements OnInit {
       return;
     }
     //console.log(this.messageForm.controls.name.value );
-    this.qutufService.test(this.messageForm.controls.name.value );
-    
-    console.log(this.data);
+    this.qutufService.getDataByText(this.messageForm.controls.name.value).then(data => {
+      console.log(data);
+    });
     this.success = true;
   }
 }
