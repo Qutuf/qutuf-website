@@ -1,0 +1,36 @@
+<div id="contact">
+  <div>
+
+    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+      <h5 *ngIf="success">Your form is valid!</h5>
+      <div>
+        <mat-form-field class="message-field">
+          <textarea matInput formControlName="message" placeholder="Your Messege &hellip;"></textarea>
+        </mat-form-field>
+      </div>
+      <div *ngIf="submitted && messageForm.controls.message.errors">
+        <div *ngIf="messageForm.controls.message.errors.required">
+          <p class="message-error">A message is required</p>
+        </div>
+      </div>
+
+      <div>
+        <input class="button button-primary button-shadow" type="submit" value="Send message">
+      </div>
+
+    </form>
+    <div class="features-wrap" *ngIf="success">
+      <div class="feature is-revealing" style="max-width: none; max-height: none">
+        <div class="feature-inner">
+          <div class="feature-icon">
+            <img src="assets/images/feature-icon-01.svg" alt="Feature 01">
+          </div>
+          <h4 class="feature-title">Lorem Ipsum</h4>
+          <p>{{text}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

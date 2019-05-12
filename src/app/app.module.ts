@@ -11,20 +11,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { QutufService } from './shared/utils/qutuf-service.service'
 import { ApiService } from './shared/utils/api-service.service';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { QueryFormComponent } from './query-form/query-form.component'
+import { MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     IntroComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    QueryFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [
     ApiService,
