@@ -15,15 +15,21 @@ export interface Enclitic {
     arabic_description: string;
     tag: string;
 }
+export interface Proclitc {
+    arabic_description: string;
+    tag: string;
+}
 
 export interface Enclitics {
     Enclitic: Enclitic;
 }
-
+export interface Proclitcs {
+    Proclitc: Proclitc;
+}
 export interface SurfaceFormMorpheme {
     certainty: string;
     voweled_form: string;
-    Proclitcs?: any;
+    Proclitcs: Proclitcs;
     Cliticless: Cliticless;
     Enclitics: Enclitics;
 }

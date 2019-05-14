@@ -6,7 +6,8 @@
       <h5 *ngIf="success">Your form is valid!</h5>
       <div>
         <mat-form-field class="message-field">
-          <textarea matInput formControlName="message" placeholder="Your Messege &hellip;"></textarea>
+          <textarea class="textarea" matInput formControlName="message"
+            placeholder="Your Messege &hellip;">عربي</textarea>
         </mat-form-field>
       </div>
       <div *ngIf="submitted && messageForm.controls.message.errors">
@@ -20,14 +21,88 @@
       </div>
 
     </form>
-    <div class="features-wrap" *ngIf="success">
+    <div id='main-cont' class="features-wrap hidden">
       <div class="feature is-revealing" style="max-width: none; max-height: none">
         <div class="feature-inner">
           <div class="feature-icon">
             <img src="assets/images/feature-icon-01.svg" alt="Feature 01">
           </div>
-          <h4 class="feature-title">Lorem Ipsum</h4>
-          <p>{{text}}</p>
+          <div class='table-cont' id='table-cont'>
+            <table class="tg table table-striped">
+              <thead class='thead'>
+                <tr>
+                  <th class="tg-hyl5" colspan="12">( {{morph?.length}} المقاطع (عدد التراكيب المحتملة</th>
+                  <th class="tg-m8xa" rowspan="3">مقدار الثقة</th>
+                  <th class="tg-m8xa" rowspan="3">مشكّلة</th>
+                  <th class="tg-m8xa" rowspan="3">الكلمة</th>
+                </tr>
+                <tr>
+                  <th class="tg-egkq" colspan="3">اللواصق اللاحقة</th>
+                  <th class="tg-egkq" colspan="6">المفردة</th>
+                  <th class="tg-egkq" colspan="3">اللواصق السابقة</th>
+                </tr>
+                <tr>
+                  <th class="tg-tqmk">الوسم</th>
+                  <th class="tg-tqmk">الوصف</th>
+                  <th class="tg-tqmk">النص</th>
+                  <th class="tg-tqmk">الجذع</th>
+                  <th class="tg-tqmk">الجذر</th>
+                  <th class="tg-tqmk">الوزن</th>
+                  <th class="tg-tqmk">الوسم</th>
+                  <th class="tg-tqmk">الوصف</th>
+                  <th class="tg-tqmk">النص</th>
+                  <th class="tg-tqmk">الوسم</th>
+                  <th class="tg-tqmk">الوصف</th>
+                  <th class="tg-tqmk">النص</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of morph">
+                  <td *ngIf="item['Enclitics']" class="tg-c3ow" colspan="3">
+                    <table class="table-striped table-inner">
+                      <tr *ngFor="let enc: of checkEnc(item['Enclitics'])">
+                        <td class="tg-c3ow">
+                          {{enc['@arabic_description']}}
+                        </td>
+                        <td class="tg-c3ow">
+                          {{enc['@tag']}}
+                        </td>
+                        <td class="tg-c3ow">
+                          1
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td *ngIf="!item['Enclitics']" class="tg-c3ow" colspan="3">No Data</td>
+                  <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@Lemma']}}</td>
+                  <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@root']}}</td>
+                  <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@voweled']}}</td>
+                  <td class="tg-c3ow">{{item['Cliticless']['@tag']}}</td>
+                  <td class="tg-c3ow">{{item['Cliticless']['@arabic_description']}}</td>
+                  <td class="tg-c3ow">{{item['@voweled_form']}}</td>
+                  <td *ngIf="item['Proclitcs']" class="tg-c3ow" colspan="3">
+                    <table class="table-striped table-inner">
+                      <tr *ngFor="let pro: of checkPre(item['Proclitcs'])">
+                        <td class="tg-c3ow">
+                          {{pro['@arabic_description']}}
+                        </td>
+                        <td class="tg-c3ow">
+                          {{pro['@tag']}}
+                        </td>
+                        <td class="tg-c3ow">
+                          1
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td *ngIf="!item['Proclitcs']" class="tg-c3ow" colspan="3">No Data</td>
+                  <td class="tg-c3ow">{{item['@certainty']}}</td>
+                  <td class="tg-c3ow">{{item['@voweled_form']}}</td>
+                  <td class="tg-c3ow">{{text}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
