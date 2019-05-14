@@ -1,294 +1,58 @@
 <style type="text/css">
-  .table {
-
-    text-align: center;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-color: #ccc;
-  }
-
-  .table-cont {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-color: #ccc;
-    text-align: center;
-    /**make table can scroll**/
-    max-height: 500px;
-    overflow: auto;
-    /** add some style**/
-    /*padding: 2px;*/
-    background: #ddd;
-    margin: 20px 10px;
-    box-shadow: 0 0 1px 3px #ddd;
-  }
-
-  .th {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 10px 5px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    word-break: normal;
-    border-color: #ccc;
-    color: #333;
-    background-color: #f0f0f0;
-  }
-
-  .td {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    padding: 10px 5px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    word-break: normal;
-    border-color: #ccc;
-    color: #333;
-    background-color: #fff;
-  }
-
-  .thead {
-    text-align: center;
-    background-color: #ddd;
-  }
-
-  .tg-uys7 {
-    
-    border-color: inherit;
-    text-align: center
-  }
-
-  .tg-6fyb {
-    background-color: #306bec;
-    border-color: inherit;
-    text-align: center
-  }
-
-  .tg-ejhy {
-    background-color: #306bec;
-    border-color: inherit;
-    text-align: center;
-    vertical-align: top
-  }
-
-  .tg-t3cb {
-    background-color: #0f7ef1;
-    border-color: inherit;
-    text-align: center
-  }
-
-  .tg-c3ow {
-    border-color: inherit;
-    text-align: center;
-    vertical-align: top
-  }
-
-  .tg-3uiz{background-color:#00d2cb;color:#f0f0f0;border-color:inherit;text-align:center}
-</style>
-<html>
-
-<head>
-  <link data-require="bootstrap@*" data-semver="3.3.7" rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-</head>
-
-<body>
-  <div class='table-cont' id='table-cont'>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th class="tg-6fyb" colspan="8"> المقاطع عدد التراكيب المحتملة </th>
-          <th class="tg-6fyb" rowspan="3">مقدار الثقة</th>
-          <th class="tg-ejhy" rowspan="3">مشكّلة </th>
-          <th class="tg-ejhy" rowspan="3">الكلمة </th>
-        </tr>
-        <tr>
-          <th class="tg-t3cb" rowspan="2">اللواصق اللاحقة</th>
-          <th class="tg-t3cb" colspan="6">المفردة</th>
-          <th class="tg-t3cb" rowspan="2">اللواصق السابقة</th>
-        </tr>
-        <tr>
-          <th class="tg-3uiz">الجذع</th>
-          <th class="tg-3uiz">الجذر</th>
-          <th class="tg-3uiz">الوزن</th>
-          <th class="tg-3uiz">الوسم</th>
-          <th class="tg-3uiz">الوصف</th>
-          <th class="tg-3uiz">النص </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-
-
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-
-        <tr>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-uys7">-</td>
-          <td class="tg-c3ow">-</td>
-          <td class="tg-c3ow">-</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</body>
-
-</html>
-<script>
-  'use strict'
-  window.onload = function () {
-    var tableCont = document.querySelector('#table-cont')
-    /**
-     * scroll handle
-     * @param {event} e -- scroll event
-     */
-    function scrollHandle(e) {
-      var scrollTop = this.scrollTop;
-      this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
-    }
-
-    tableCont.addEventListener('scroll', scrollHandle)
-  }
-
-</script>
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-uys7{border-color:inherit;text-align:center}
+  .tg .tg-6fyb{background-color:#306bec;border-color:inherit;text-align:center}
+  .tg .tg-ejhy{background-color:#306bec;border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-t3cb{background-color:#0f7ef1;border-color:inherit;text-align:center}
+  .tg .tg-3uiz{background-color:#00d2cb;color:#f0f0f0;border-color:inherit;text-align:center}
+  .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+  </style>
+  <table class="tg">
+    <tr>
+      <th class="tg-6fyb" colspan="12"> المقاطع(عدد التراكيب المحتملة -) </th>
+      <th class="tg-6fyb" rowspan="3">مقدار الثقة</th>
+      <th class="tg-ejhy" rowspan="3">مشكّلة </th>
+      <th class="tg-ejhy" rowspan="3">الكلمة </th>
+    </tr>
+    <tr>
+      <td class="tg-t3cb" colspan="3" rowspan="2">اللواصق اللاحقة</td>
+      <td class="tg-t3cb" colspan="6">المفردة</td>
+      <td class="tg-t3cb" colspan="3" rowspan="2">اللواصق السابقة</td>
+    </tr>
+    <tr>
+      <td class="tg-3uiz">الجذع</td>
+      <td class="tg-3uiz">الجذر</td>
+      <td class="tg-3uiz">الوزن</td>
+      <td class="tg-3uiz">الوسم</td>
+      <td class="tg-3uiz">الوصف</td>
+      <td class="tg-3uiz">النص </td>
+    </tr>
+    <tr>
+      <td class="tg-uys7">الوسم</td>
+      <td class="tg-0pky">الوصف</td>
+      <td class="tg-0pky">النص</td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-uys7">الوسم</td>
+      <td class="tg-0pky">الوصف</td>
+      <td class="tg-0pky">النص </td>
+      <td class="tg-uys7" rowspan="2">-</td>
+      <td class="tg-c3ow" rowspan="2">-</td>
+      <td class="tg-c3ow" rowspan="2">-</td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">-</td>
+      <td class="tg-0pky">-</td>
+      <td class="tg-0pky">-</td>
+      <td class="tg-0pky">-</td>
+      <td class="tg-0pky">-</td>
+      <td class="tg-0pky">-</td>
+    </tr>
+  </table>
