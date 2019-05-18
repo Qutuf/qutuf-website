@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QutufService } from '../shared/utils/qutuf-service.service';
-import { qutufData } from '../shared/helpers/qutufData'
-import { log } from 'util';
+import { qutufData, SurfaceFormMorpheme, Enclitic, Proclitc } from '../shared/helpers/qutufData'
 
 @Component({
   selector: 'app-query-form',
@@ -16,6 +13,7 @@ export class QueryFormComponent implements OnInit {
   submitted = false;
   success = false;
   data: qutufData;
+  morph: SurfaceFormMorpheme[];
   text: '';
   constructor(private formBuilder: FormBuilder, private qutufService: QutufService) { }
 
@@ -31,12 +29,35 @@ export class QueryFormComponent implements OnInit {
     if (this.messageForm.invalid) {
       return;
     }
-    //console.log(this.messageForm.controls.message.value);
-    this.qutufService.getDataByText(this.messageForm.controls.message.value).then(data => {
-      console.log(data.Text.Sentence['@original_string']);
-      this.text = data.Text.Sentence['@original_string'];
+      this.qutufService.getDataByText(this.messageForm.controls.message.value).then(data => {
       this.success = true;
+      this.callSticky();
+      this.morph = data.Text.Sentence.Word['0'].SurfaceFormMorphemes;
+      console.log(this.morph);
+      
+      this.text = data.Text.Sentence['@original_string'];
+
     });
 
+  }
+  checkPre(proclitcs: Proclitc[]) {
+    return proclitcs ? proclitcs['Proclitc'] : [];
+  }
+  checkEnc(enclitics: Enclitic[]) {
+    return enclitics ? [enclitics['Enclitic']] : [];
+  }
+  callSticky() {
+    var tableCont = document.querySelector('#table-cont')
+    var mainCont = document.querySelector('#main-cont')
+    /**
+     * scroll handle
+     * @param {event} e -- scroll event
+     */
+    function scrollHandle(e) {
+      var scrollTop = this.scrollTop;
+      this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+    }
+    mainCont.classList.remove('hidden');
+    tableCont.addEventListener('scroll', scrollHandle)
   }
 }
