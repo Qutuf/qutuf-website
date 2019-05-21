@@ -3,7 +3,7 @@
 
     <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
 
-      <h5 *ngIf="success">Your form is valid!</h5>
+      <h5 *ngIf="success"></h5>
       <div>
         <mat-form-field class="message-field">
           <textarea class="textarea" matInput formControlName="message"
@@ -12,7 +12,7 @@
       </div>
       <div *ngIf="submitted && messageForm.controls.message.errors">
         <div *ngIf="messageForm.controls.message.errors.required">
-          <p class="message-error">A word input is required</p>
+          <p class="message-error">A word or phrase input is required</p>
         </div>
       </div>
 
