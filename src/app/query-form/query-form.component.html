@@ -21,6 +21,9 @@
       </div>
 
     </form>
+   <div class="spinner-cont" *ngIf="reveal">
+      <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+   </div>
     <div id='main-cont' class="features-wrap hidden">
       <div class="feature is-revealing" style="max-width: none; max-height: none">
         <div class="feature-inner">
@@ -68,7 +71,7 @@
                           {{enc['@tag']}}
                         </td>
                         <td class="tg-c3ow">
-                          1
+                          {{item['@voweled_form']}}
                         </td>
                       </tr>
                     </table>
@@ -90,12 +93,12 @@
                           {{pro['@tag']}}
                         </td>
                         <td class="tg-c3ow">
-                          1
+                          {{item['@voweled_form']}}
                         </td>
                       </tr>
                     </table>
                   </td>
-                  <td *ngIf="!item['Proclitcs']" class="tg-c3ow" colspan="3">No Data</td>
+                  <td *ngIf="!item['Proclitcs']" class="tg-c3ow" colspan="3">لا يوجد لاصق</td>
                   <td class="tg-c3ow">{{item['@certainty']}}</td>
                   <td class="tg-c3ow">{{item['@voweled_form']}}</td>
                   <td class="tg-c3ow">{{text}}</td>
@@ -106,6 +109,9 @@
         </div>
       </div>
 
+    </div>
+    <div *ngIf="error">
+      Error
     </div>
   </div>
 </div>
