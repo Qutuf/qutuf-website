@@ -12,6 +12,8 @@ export class QueryFormComponent implements OnInit {
   messageForm: FormGroup;
   submitted = false;
   success = false;
+  reveal = false;
+  error = false;
   data: qutufData;
   morph: SurfaceFormMorpheme[];
   text: '';
@@ -25,23 +27,31 @@ export class QueryFormComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-
+    this.reveal = true;
     if (this.messageForm.invalid) {
       return;
     }
-      this.qutufService.getDataByText(this.messageForm.controls.message.value).then(data => {
-      this.success = true;
-      this.callSticky();
-      this.morph = data.Text.Sentence.Word['0'].SurfaceFormMorphemes;
-      console.log(this.morph);
-      
-      this.text = data.Text.Sentence['@original_string'];
+    this.qutufService.getDataByText(this.messageForm.controls.message.value).then(data => {
+      if (data) {
+        this.success = true;
+        this.callSticky();
+        this.morph = data.Text.Sentence.Word['0'].SurfaceFormMorphemes;
+        this.reveal = false;
+        this.text = data.Text.Sentence['@original_string'];
+        if (!this.morph.length) {
+          this.morph = [data.Text.Sentence.Word['0'].SurfaceFormMorphemes];
+        }
+
+      }
+      else {
+        this.error = true;
+      }
 
     });
 
   }
   checkPre(proclitcs: Proclitc[]) {
-    return proclitcs ? proclitcs['Proclitc'] : [];
+    return proclitcs ? [proclitcs['Proclitc']] : [];
   }
   checkEnc(enclitics: Enclitic[]) {
     return enclitics ? [enclitics['Enclitic']] : [];
