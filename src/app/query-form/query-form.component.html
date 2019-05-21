@@ -12,7 +12,7 @@
       </div>
       <div *ngIf="submitted && messageForm.controls.message.errors">
         <div *ngIf="messageForm.controls.message.errors.required">
-          <p class="message-error">A message is required</p>
+          <p class="message-error">A word input is required</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@
                       </tr>
                     </table>
                   </td>
-                  <td *ngIf="!item['Enclitics']" class="tg-c3ow" colspan="3">No Data</td>
+                  <td *ngIf="!item['Enclitics']" class="tg-c3ow" colspan="3">لا يوجد لاصق</td>
                   <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@Lemma']}}</td>
                   <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@root']}}</td>
                   <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@voweled']}}</td>
