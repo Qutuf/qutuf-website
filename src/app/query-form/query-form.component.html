@@ -21,9 +21,9 @@
       </div>
 
     </form>
-   <div class="spinner-cont" *ngIf="reveal">
+    <div class="spinner-cont" *ngIf="reveal">
       <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
-   </div>
+    </div>
     <div id='main-cont' class="features-wrap hidden">
       <div class="feature is-revealing" style="max-width: none; max-height: none">
         <div class="feature-inner">
@@ -31,7 +31,7 @@
             <img src="assets/images/feature-icon-01.svg" alt="Feature 01">
           </div>
           <div class='table-cont' id='table-cont'>
-            <table class="tg table table-striped">
+            <table class="tg table table-striped" *ngIf="hasData">
               <thead class='thead'>
                 <tr>
                   <th class="tg-hyl5" colspan="12">( {{morph?.length}} المقاطع (عدد التراكيب المحتملة</th>
@@ -71,15 +71,30 @@
                           {{enc['@tag']}}
                         </td>
                         <td class="tg-c3ow">
-                          {{item['@voweled_form']}}
+                          {{enc['@voweled_text']}}
                         </td>
                       </tr>
                     </table>
                   </td>
                   <td *ngIf="!item['Enclitics']" class="tg-c3ow" colspan="3">لا يوجد لاصق</td>
-                  <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@Lemma']}}</td>
-                  <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@root']}}</td>
-                  <td class="tg-c3ow">{{item['Cliticless']['Pattern']['@voweled_text']}}</td>
+                  <td class="tg-c3ow" *ngIf="item['Cliticless']['Pattern']">
+                    {{item['Cliticless']['Pattern']['@Lemma']}}
+                  </td>
+                  <td class="tg-c3ow" *ngIf="item['Cliticless']['Pattern']">
+                    {{item['Cliticless']['Pattern']['@root']}}
+                  </td>
+                  <td class="tg-c3ow" *ngIf="item['Cliticless']['Pattern']">
+                    {{item['Cliticless']['Pattern']['@voweled']}}
+                  </td>
+                  <td class="tg-c3ow" *ngIf="!item['Cliticless']['Pattern']">
+                    no lemma
+                  </td>
+                  <td class="tg-c3ow" *ngIf="!item['Cliticless']['Pattern']">
+                    no root
+                  </td>
+                  <td class="tg-c3ow" *ngIf="!item['Cliticless']['Pattern']">
+                    no vouled
+                  </td>
                   <td class="tg-c3ow">{{item['Cliticless']['@tag']}}</td>
                   <td class="tg-c3ow">{{item['Cliticless']['@arabic_description']}}</td>
                   <td class="tg-c3ow">{{item['@voweled_form']}}</td>
@@ -93,7 +108,7 @@
                           {{pro['@tag']}}
                         </td>
                         <td class="tg-c3ow">
-                          {{item['@voweled_form']}}
+                          {{pro['@voweled_text']}}
                         </td>
                       </tr>
                     </table>
@@ -104,6 +119,35 @@
                   <td class="tg-c3ow">{{text}}</td>
                 </tr>
               </tbody>
+            </table>
+            <div *ngIf="success && !hasData"> No Data</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id='main-cont-phrase' class="features-wrap hidden">
+      <div class="feature is-revealing" style="max-width: none; max-height: none">
+        <div class="feature-inner">
+          <div class="feature-icon">
+            <img src="assets/images/feature-icon-01.svg" alt="Feature 01">
+          </div>
+          <div class='table-cont' id='table-cont-phrase'>
+            <table class="tg table table-striped">
+              <thead class='thead'>
+                <tr>
+                  <th class="tg-hyl5">هل تم التعرف عليها؟</th>
+                  <th class="tg-hyl5">المفردة-الجذع (Lemma/stem)</th>
+                  <th class="tg-hyl5">عدد الاحتمالات</th>
+                  <th class="tg-hyl5">الكلمة</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let item: of checkPhraseData(data)">
+                <td class="tg-c3ow">{{item['@has_been_identified']?'نعم' : 'لا'}}</td>
+                <td class="tg-c3ow">{{item['@lemmas']}}</td>
+                <td class="tg-c3ow">{{item['@number_of_possibilities']}}</td>
+                <td class="tg-c3ow">{{item['@original_string']}}</td>
+              </tr>
             </table>
           </div>
         </div>

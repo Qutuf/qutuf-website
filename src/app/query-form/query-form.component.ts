@@ -14,6 +14,7 @@ export class QueryFormComponent implements OnInit {
   success = false;
   reveal = false;
   error = false;
+  hasData = false;
   data: qutufData;
   morph: SurfaceFormMorpheme[];
   text: '';
@@ -31,23 +32,37 @@ export class QueryFormComponent implements OnInit {
     if (this.messageForm.invalid) {
       return;
     }
-    this.qutufService.getDataByText(this.messageForm.controls.message.value).then(data => {
-      if (data) {
-        this.success = true;
-        this.callSticky();
-        this.morph = data.Text.Sentence.Word['0'].SurfaceFormMorphemes;
-        this.reveal = false;
-        this.text = data.Text.Sentence['@original_string'];
-        if (!this.morph.length) {
-          this.morph = [data.Text.Sentence.Word['0'].SurfaceFormMorphemes];
+
+    this.qutufService.getDataByText(this.messageForm.controls.message.value)
+      .then((result) => {
+        if (result.wordData) {
+          this.callSticky(result.isPhrase);
+          /// Phrase Handling
+          if (result.isPhrase) {
+            this.reveal = false;
+            this.data = result.wordData.Text.Sentence.Word;
+          }
+          /// Single Word Handling
+          else {
+            this.success = true;
+            this.reveal = false;
+            this.hasData = result.wordData.Text.Sentence.Word['0']['@number_of_possibilities'] > 0;
+            if (this.hasData) {
+              this.morph = result.wordData.Text.Sentence.Word['0'].SurfaceFormMorphemes;
+              this.text = result.wordData.Text.Sentence['@original_string'];
+              console.log(this.morph);
+              
+              if (!this.morph.length) {
+                this.morph = [result.wordData.Text.Sentence.Word['0'].SurfaceFormMorphemes];
+              }
+            }
+          }
+        }
+        else {
+          this.error = true;
         }
 
-      }
-      else {
-        this.error = true;
-      }
-
-    });
+      });
 
   }
   checkPre(proclitcs: Proclitc[]) {
@@ -56,9 +71,16 @@ export class QueryFormComponent implements OnInit {
   checkEnc(enclitics: Enclitic[]) {
     return enclitics ? [enclitics['Enclitic']] : [];
   }
-  callSticky() {
+  checkPhraseData(phraseData: any[]) {
+    return phraseData ? phraseData.filter(item => item['@number_of_possibilities'] > 0) : [];
+  }
+  callSticky(Phrase) {
     var tableCont = document.querySelector('#table-cont')
     var mainCont = document.querySelector('#main-cont')
+    if (Phrase) {
+      mainCont = document.querySelector('#main-cont-phrase')
+      tableCont = document.querySelector('#table-cont-phrase')
+    }
     /**
      * scroll handle
      * @param {event} e -- scroll event
