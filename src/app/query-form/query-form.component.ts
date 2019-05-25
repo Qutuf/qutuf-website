@@ -9,6 +9,7 @@ import { qutufData, SurfaceFormMorpheme, Enclitic, Proclitc } from '../shared/he
   styleUrls: ['./query-form.component.scss']
 })
 export class QueryFormComponent implements OnInit {
+  inputVar;
   messageForm: FormGroup;
   submitted = false;
   success = false;
@@ -18,8 +19,8 @@ export class QueryFormComponent implements OnInit {
   data: qutufData;
   morph: SurfaceFormMorpheme[];
   text: '';
-  constructor(private formBuilder: FormBuilder, private qutufService: QutufService) { }
-
+  constructor(private formBuilder: FormBuilder, private qutufService: QutufService ) {  }
+  
   ngOnInit() {
     this.messageForm = this.formBuilder.group({
       message: ['', Validators.required]
@@ -27,6 +28,7 @@ export class QueryFormComponent implements OnInit {
 
   }
   onSubmit() {
+    
     this.submitted = true;
     this.reveal = true;
     if (this.messageForm.invalid) {
@@ -81,6 +83,8 @@ export class QueryFormComponent implements OnInit {
       mainCont = document.querySelector('#main-cont-phrase')
       tableCont = document.querySelector('#table-cont-phrase')
     }
+
+   
     /**
      * scroll handle
      * @param {event} e -- scroll event

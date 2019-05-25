@@ -5,11 +5,14 @@
 
       <h5 *ngIf="success"></h5>
       <div>
-        <mat-form-field class="message-field">
-          <textarea class="textarea" matInput formControlName="message"
-            placeholder="Your Messege &hellip;">عربي</textarea>
+        <mat-form-field class="message-field"  hintLabel="">
+          <textarea  id="WordInput"  class="textarea" matInput formControlName="message"
+            placeholder=":مثال" value='غير'></textarea>
+            
+            <mat-hint align="end">أدخل كلمة أو جملة باللغة العربية</mat-hint>
         </mat-form-field>
       </div>
+    <br>
       <div *ngIf="submitted && messageForm.controls.message.errors">
         <div *ngIf="messageForm.controls.message.errors.required">
           <p class="message-error">A word or phrase input is required</p>
@@ -17,7 +20,7 @@
       </div>
 
       <div>
-        <input class="button button-primary button-shadow" type="submit" value="Send message">
+        <input class="button button-primary button-shadow" type="submit" value="Analyze">
       </div>
 
     </form>
