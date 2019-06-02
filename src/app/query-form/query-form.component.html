@@ -4,15 +4,15 @@
     <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
 
       <h5 *ngIf="success"></h5>
-      <div >
-        <mat-form-field class="message-field input" hintLabel=""  >
-          
-            <mat-label style="align-self:flex-start;"> Enter &nbsp;&nbsp;&nbsp; أدخل </mat-label>
-          
-          <textarea dir="rtl" id="WordInput" class="textarea" matInput formControlName="message" ></textarea>
+      <div>
+        <mat-form-field class="message-field input" hintLabel="">
+
+          <mat-label style="align-self:flex-start;"> Enter &nbsp;&nbsp;&nbsp; أدخل </mat-label>
+
+          <textarea dir="rtl" id="WordInput" class="textarea" matInput formControlName="message"></textarea>
           <mat-hint align="end">أدخل كلمة أو جملة باللغة العربية</mat-hint>
           <mat-hint align="start">Enter A word or phrase in Arabic</mat-hint>
-          
+
         </mat-form-field>
       </div>
       <br>
@@ -41,116 +41,117 @@
               <thead class='thead'>
                 <tr>
                   <th class="tg-hyl5" colspan="12">
-                    <p>
+                    <p class="p">
                       ( {{morph?.length}} المقاطع (عدد التراكيب المحتملة
                       <br>
-                      number of possibilities ( {{morph?.length}}) </p>
+                      Number of possibilities ( {{morph?.length}}) </p>
                   </th>
                   <th class="tg-m8xa" rowspan="3">
-                    <p>
+                    <p class="p">
                       Certainty
                       <br>
                       مقدار الثقة
                     </p>
                   </th>
                   <th class="tg-m8xa" rowspan="3">
-                    <p>Voweled form
+                    <p class="p">
+                      Voweled form
                       <br> مشكّلة
                     </p>
 
-                   
+
                   </th>
                   <th class="tg-m8xa" rowspan="3">
-                    <p> Original string
+                    <p class="p"> Original string
                       <br>الكلمة
                     </p>
 
-                    
+
                   </th>
                 </tr>
                 <tr>
                   <th class="tg-egkq" colspan="3">
-                    <p> Enclitic 
+                    <p class="p"> Enclitic
                       <br>اللواصق اللاحقة
                     </p>
 
 
-                    
+
                   </th>
                   <th class="tg-egkq" colspan="6">
-                      Word 
-                    <p>
-                      <br>المفردة
+                    Word
+                    <p class="p">
+                      المفردة
                     </p>
 
-                    
+
                   </th>
                   <th class="tg-egkq" colspan="3">
-                    <p> Proclitcs
+                    <p class="p"> Proclitcs
                       <br>اللواصق السابقة
                     </p>
 
 
-                    
+
                   </th>
                 </tr>
                 <tr>
                   <th class="tg-tqmk">
-                    <p>Tag
+                    <p class="p">Tag
                       <br>الوسم
                     </p>
 
 
-                    
+
                   </th>
                   <th class="tg-tqmk">
-                    <p> Arabic description
+                    <p class="p"> Arabic description
                       <br>الوصف
                     </p>
 
-                    
+
                   </th>
                   <th class="tg-tqmk">
-                    <p>Voweled text
+                    <p class="p">Voweled text
                       <br>النص
                     </p>
 
-                    
+
                   </th>
                   <th class="tg-tqmk">
 
-                    <p> Lemma
+                    <p class="p">Lemma
                       <br>الجذع
                     </p>
 
                   </th>
                   <th class="tg-tqmk">
-                    <p> root
+                    <p class="p">root
                       <br>الجذر
                     </p>
 
-                    
+
                   </th>
                   <th class="tg-tqmk">
-                    <p> Voweled
+                    <p class="p"> Voweled
                       <br>الوزن
                     </p>
 
                   </th>
                   <th class="tg-tqmk">
-                    <p> Tag
+                    <p class="p">Tag
                       <br>الوسم
                     </p>
-                    
+
                   </th>
                   <th class="tg-tqmk">
-                    <p> Arabic description
+                    <p class="p"> Arabic description
                       <br>الوصف
                     </p>
 
                   </th>
                   <th class="tg-tqmk">
-                    <p> Voweled text
+                    <p class="p">Voweled text
                       <br>النص
                     </p>
 
@@ -158,24 +159,24 @@
                   <th class="tg-tqmk">
 
 
-                      <p>Tag
-                          <br>الوسم
-                        </p>
-                        
+                    <p class="p">Tag
+                      <br>الوسم
+                    </p>
+
                   </th>
                   <th class="tg-tqmk">
-                      <p> Arabic description
-                          <br>الوصف
-                        </p>
-                        
+                    <p class="p">Arabic description
+                      <br>الوصف
+                    </p>
+
                   </th>
                   <th class="tg-tqmk">
 
-                      <p>Voweled text
-                          <br>
-                          النص
-                        </p>
-                        
+                    <p class="p">Voweled text
+                      <br>
+                      النص
+                    </p>
+
                   </th>
                 </tr>
               </thead>
@@ -185,10 +186,10 @@
                     <table class="table-striped table-inner">
                       <tr *ngFor="let enc: of checkEnc(item['Enclitics'])">
                         <td class="tg-c3ow">
-                           {{enc['@tag']}}
+                          {{enc['@tag']}}
                         </td>
                         <td class="tg-c3ow">
-                            {{enc['@arabic_description']}}
+                          {{enc['@arabic_description']}}
                         </td>
                         <td class="tg-c3ow">
                           {{enc['@voweled_text']}}
@@ -240,7 +241,7 @@
                 </tr>
               </tbody>
             </table>
-            <div *ngIf="success && !hasData"> No Data</div>
+            <div *ngIf="success && !hasData"> لم يعرف</div>
           </div>
         </div>
       </div>
@@ -256,10 +257,18 @@
             <table class="tg table table-striped">
               <thead class='thead'>
                 <tr>
-                  <th class="tg-hyl5">هل تم التعرف عليها؟</th>
-                  <th class="tg-hyl5">المفردة-الجذع (Lemma/stem)</th>
-                  <th class="tg-hyl5">عدد الاحتمالات</th>
-                  <th class="tg-hyl5">الكلمة</th>
+                  <th class="tg-hyl5">
+                    <p class="p">هل تم التعرف عليها؟<br>Have been recognized?</p>
+                  </th>
+                  <th class="tg-hyl5">
+                    <p class="p">المفردة-الجذع<br>Lemma-stem</p>
+                  </th>
+                  <th class="tg-hyl5">
+                    <p class="p">عدد الاحتمالات<br>number of possibilities</p>
+                  </th>
+                  <th class="tg-hyl5">
+                    <p class="p">الكلمة<br></p>
+                  </th>
                 </tr>
               </thead>
               <tr *ngFor="let item: of checkPhraseData(data)">
