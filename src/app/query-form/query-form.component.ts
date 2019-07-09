@@ -30,7 +30,7 @@ export class QueryFormComponent implements OnInit {
   onSubmit() {
 
     this.submitted = true;
-    this.success=false;
+    this.success = false;
     this.reveal = true;
     if (this.messageForm.invalid) {
       return;
@@ -53,7 +53,7 @@ export class QueryFormComponent implements OnInit {
             if (this.hasData) {
               this.morph = result.wordData.Text.Sentence.Word['0'].SurfaceFormMorphemes;
               this.text = result.wordData.Text.Sentence['@original_string'];
-              console.log(this.morph);
+              //   console.log(this.morph);
 
               if (!this.morph.length) {
                 this.morph = [result.wordData.Text.Sentence.Word['0'].SurfaceFormMorphemes];
@@ -69,10 +69,12 @@ export class QueryFormComponent implements OnInit {
 
   }
   checkPre(proclitcs: Proclitc[]) {
-    return proclitcs ? [proclitcs['Proclitc']] : [];
+    let pre = proclitcs['Proclitc'];
+    return pre.length > 0 ? pre : [pre];
   }
   checkEnc(enclitics: Enclitic[]) {
-    return enclitics ? [enclitics['Enclitic']] : [];
+    let enc = enclitics['Enclitic'];
+    return enc.length > 0 ? enc : [enc];
   }
   checkPhraseData(phraseData: qutufData) {
     return phraseData ? phraseData.Text.Sentence.Word.filter(item => item['@number_of_possibilities'] > 0) : [];
@@ -92,7 +94,7 @@ export class QueryFormComponent implements OnInit {
       var scrollTop = this.scrollTop;
       this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
     }
-    if(Phrase) {
+    if (Phrase) {
       mainContPhrase.classList.remove('hidden');
       mainCont.classList.add('hidden');
       tableContPhrase.addEventListener('scroll', scrollHandle)
@@ -102,7 +104,7 @@ export class QueryFormComponent implements OnInit {
       mainCont.classList.remove('hidden');
       tableCont.addEventListener('scroll', scrollHandle)
     }
-    
-    
+
+
   }
 }
