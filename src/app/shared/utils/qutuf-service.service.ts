@@ -9,13 +9,13 @@ import { Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class QutufService {
-  phraseRegex = /^([\u0621-\u064A\u0660-\u0669]+\s[\u0621-\u064A\u0660-\u0669]+)*$/g
+  //phraseRegex = /^([\u0621-\u064A\u0660-\u0669]+\s[\u0621-\u064A\u0660-\u0669]+)*$/g
   constructor(private apiService: ApiService) {
 
   }
-  getDataByText(text) {
+  getDataByText(text: string) {
     let url = environment.BASE_URL_TEXT;
-    let phrase = this.phraseRegex.test(text);
+    let phrase = text.split(' ').length > 1;
     if (phrase) {
       url = environment.BASE_URL_PHRASE;
     }

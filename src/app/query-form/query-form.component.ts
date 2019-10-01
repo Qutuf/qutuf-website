@@ -38,7 +38,7 @@ export class QueryFormComponent implements OnInit {
 
     this.qutufService.getDataByText(this.messageForm.controls.message.value)
       .then((result) => {
-        if (result.wordData) {
+        if (result.wordData) { 
           this.callSticky(result.isPhrase);
           /// Phrase Handling
           if (result.isPhrase) {
@@ -74,10 +74,11 @@ export class QueryFormComponent implements OnInit {
   }
   checkEnc(enclitics: Enclitic[]) {
     let enc = enclitics['Enclitic'];
+
     return enc.length > 0 ? enc : [enc];
   }
   checkPhraseData(phraseData: qutufData) {
-    return phraseData ? phraseData.Text.Sentence.Word.filter(item => item['@number_of_possibilities'] > 0) : [];
+    return phraseData ? phraseData.Text.Sentence.Word.filter(item => item['@number_of_possibilities'] >= 0) : [];
   }
   callSticky(Phrase) {
     var tableCont = document.querySelector('#table-cont')
@@ -94,15 +95,16 @@ export class QueryFormComponent implements OnInit {
       var scrollTop = this.scrollTop;
       this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
     }
-    if (Phrase) {
-      mainContPhrase.classList.remove('hidden');
-      mainCont.classList.add('hidden');
-      tableContPhrase.addEventListener('scroll', scrollHandle)
-    }
-    else {
+    if (!Phrase) {
+      
       mainContPhrase.classList.add('hidden');
       mainCont.classList.remove('hidden');
       tableCont.addEventListener('scroll', scrollHandle)
+    }
+    else {
+      mainContPhrase.classList.remove('hidden');
+      mainCont.classList.add('hidden');
+      tableContPhrase.addEventListener('scroll', scrollHandle)
     }
 
 

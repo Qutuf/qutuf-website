@@ -88,7 +88,16 @@
   }
   .spinner-cont {
     position: fixed;
-    left: 50%;
+    left: 46%;
     top: 50%;
     z-index: 999;
+  }
+  @media only screen and (max-width: 490px) 
+  {
+    .spinner-cont {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 999;
+    }
   }

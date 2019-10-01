@@ -194,7 +194,7 @@
                         <td class="tg-c3ow">
                           {{enc['@voweled_text']}}
                         </td>
-                        
+
                       </tr>
                     </table>
                   </td>
@@ -224,14 +224,16 @@
                     <table class="table-striped table-inner">
                       <tr *ngFor="let pro: of checkPre(item['Proclitcs'])">
                         <td class="tg-c3ow">
-                          {{pro['@arabic_description']}}
-                        </td>
-                        <td class="tg-c3ow">
                           {{pro['@tag']}}
                         </td>
                         <td class="tg-c3ow">
+                          {{pro['@arabic_description']}}
+                        </td>
+
+                        <td class="tg-c3ow">
                           {{pro['@voweled_text']}}
                         </td>
+
                       </tr>
                     </table>
                   </td>
@@ -242,12 +244,12 @@
                 </tr>
               </tbody>
             </table>
-           
+
             <div *ngIf="success && !hasData"> لم يعرف</div>
           </div>
           <p>Find more information at our <a href="https://github.com/Qutuf/Qutuf">repository.</a> </p>
-        </div>  
-        
+        </div>
+
       </div>
 
     </div>
@@ -275,19 +277,22 @@
                   </th>
                 </tr>
               </thead>
-              <tr *ngFor="let item: of checkPhraseData(data)">
-                <td class="tg-c3ow">{{item['@has_been_identified']?'نعم' : 'لا'}}</td>
-                <td class="tg-c3ow">{{item['@lemmas']}}</td>
-                <td class="tg-c3ow">{{item['@number_of_possibilities']}}</td>
-                <td class="tg-c3ow">{{item['@original_string']}}</td>
+              <tr *ngFor="let item: of checkPhraseData(data) let i = index">
+                <ng-template [ngIf]="i % 2== 0">
+                  <td class="tg-c3ow">{{item['@has_been_identified']}}</td>
+                  <td class="tg-c3ow">{{item['@lemmas']}}</td>
+                  <td class="tg-c3ow">{{item['@number_of_possibilities']}}</td>
+                  <td class="tg-c3ow">{{item['@original_string']}}</td>
+                </ng-template>
+
               </tr>
-             
+
             </table>
             <p>Find more information at our <a href="https://github.com/Qutuf/Qutuf">repository.</a> </p>
           </div>
         </div>
       </div>
-    
+
     </div>
     <div *ngIf="error">
       Error
